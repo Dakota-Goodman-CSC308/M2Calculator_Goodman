@@ -16,6 +16,10 @@ class ViewController: UIViewController {
     @IBAction func operatorButton(_ sender: Any) {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle:.alert)
         
+//        let plusAction = UIAlertAction(title: nil, style: .default, handler: {(action: UIAlertAction) -> () in
+//            self.selectOperator.setTitle("+", for: .normal)
+//        })
+        
         let plusAction = UIAlertAction(title: "+(plus)", style: .default) { _ in
             self.selectOperator.setTitle("+", for: .normal)
         }
@@ -40,7 +44,7 @@ class ViewController: UIViewController {
         
     }
     
-    func showAlert (message: String){
+    func showAlert (message: String, title: String? = "Alert"){
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default)
         alert.addAction(okAction)
@@ -49,7 +53,7 @@ class ViewController: UIViewController {
     
     @IBAction func resultButton(_sender: Any){
         guard let op1 = operand1TextField.text, let a = Int(op1)else{
-            showAlert(message: "Please enter a number.")
+            showAlert(message: "Please enter a number.", title: "op1 Error")
             return
         }
         guard let op2 = operand2TextField.text, let b = Int(op2)else{
